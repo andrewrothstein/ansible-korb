@@ -2,7 +2,7 @@ andrewrothstein.korb
 ===========================
 ![Build Status](https://github.com/andrewrothstein/korb/actions/workflows/build.yml/badge.svg)
 
-@TODO document korb goes here
+Installs the [korb](https://github.com/BeryJu/korb) cli.
 
 Requirements
 ------------

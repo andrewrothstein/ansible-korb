@@ -2,7 +2,7 @@
 galaxy_info:
   author: Andrew Rothstein
   company: BlackRock
-  description: '@TODO document korb goes here'
+  description: installs the korb cli
   galaxy_tags: []
   license: MIT
   min_ansible_version: '1.2'
