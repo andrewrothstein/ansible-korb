@@ -1,0 +1,13 @@
+---
+# vars file for korb
+korb_os: '{{ ansible_system | lower }}'
+korb_arch: '{{ korb_arch_map[ansible_architecture] }}'
+korb_platform: '{{ korb_os }}_{{ korb_arch }}'
+korb_prefix: korb_{{ korb_ver }}_{{ korb_platform }}
+korb_archive: '{{ korb_prefix }}.tar.gz'
+korb_tmp_archive: '{{ korb_tmpdir | default("/tmp") }}/{{ korb_archive }}'
+korb_url: '{{ korb_mirror }}/v{{ korb_ver }}/{{ korb_archive }}'
+korb_checksum: '{{ korb_checksums[korb_ver][korb_platform] }}'
+korb_install_dir: '{{ korb_parent_install_dir }}/{{ korb_prefix }}'
+korb_install_exe: '{{ korb_install_dir }}/korb'
+korb_link: '{{ korb_parent_install_dir }}/bin/korb'

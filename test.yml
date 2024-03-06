@@ -1,0 +1,14 @@
+---
+- name: Testing andrewrothstein.korb role
+  hosts: all
+  tasks:
+    - name: Installing andrewrothstein.korb
+      ansible.builtin.include_role:
+        name: '{{ playbook_dir }}'
+    - name: Executing 'korb --version'
+      ansible.builtin.command: korb --version
+      changed_when: false
+      register: 'korb_test_output'
+    - name: Output from 'korb --version'
+      ansible.builtin.debug:
+        msg: '{{ korb_test_output.stdout }}'

@@ -1,0 +1,34 @@
+---
+# defaults file for korb
+korb_ver: 2.2.0
+korb_arch_map:
+  aarch64: arm64
+  arm64: arm64
+  x86_64: amd64
+korb_parent_install_dir: /usr/local
+korb_mirror: https://github.com/BeryJu/korb/releases/download
+korb_checksums:
+  # https://github.com/BeryJu/korb/releases/download/v2.2.0/korb_2.2.0_SHA256SUMS
+  2.2.0:
+    # https://github.com/BeryJu/korb/releases/download/v2.2.0/korb_2.2.0_darwin_amd64.tar.gz
+    darwin_amd64: sha256:9e2c4bd0f86a227d676a2c37a60dbe99b24c0258a42a6def5457b239fdc39cf5
+    # https://github.com/BeryJu/korb/releases/download/v2.2.0/korb_2.2.0_darwin_arm64.tar.gz
+    darwin_arm64: sha256:cede380d3eec1dab8e52c97d6b597a2694f6d3e4bdadc3865c85540a9fd3a21c
+    # https://github.com/BeryJu/korb/releases/download/v2.2.0/korb_2.2.0_linux_amd64.tar.gz
+    linux_amd64: sha256:0cc9cdf775b530316151a0be3e7eb7e647a8663b61974b6916660a7baaa5f227
+    # https://github.com/BeryJu/korb/releases/download/v2.2.0/korb_2.2.0_linux_arm.tar.gz
+    linux_arm: sha256:2f44a66fb44c74c06e39f1620a8f9ff210e29db7ba476908bcd364820f634aa4
+    # https://github.com/BeryJu/korb/releases/download/v2.2.0/korb_2.2.0_linux_arm64.tar.gz
+    linux_arm64: sha256:55dbd173c6ebc217c7af697fd5de638f1b3c444694bbc6d080aff749591d285e
+    # https://github.com/BeryJu/korb/releases/download/v2.2.0/korb_2.2.0_windows_amd64.tar.gz
+    windows_amd64: sha256:c84542d8cd552b5b451c76768beacd4af2e4c23542370a6402a0cae30faec708
+    # https://github.com/BeryJu/korb/releases/download/v2.2.0/korb_2.2.0_windows_arm.tar.gz
+    windows_arm: sha256:a600670e89c1553c5811abf0c09617fe5056f0918a004be3642c154749e67ca6
+    # https://github.com/BeryJu/korb/releases/download/v2.2.0/korb_2.2.0_windows_arm64.tar.gz
+    windows_arm64: sha256:5103eda1d57e25a8ae013d7cb9a1caf9f41fda46dc72660487c325e8ae6d163a
+    # https://github.com/BeryJu/korb/releases/download/v2.2.0/korb_2.2.0_freebsd_amd64.tar.gz
+    freebsd_amd64: sha256:951d3f3a874aa7add598d1e0a50305182feb5f9730688185a6bd6c55488bebdd
+    # https://github.com/BeryJu/korb/releases/download/v2.2.0/korb_2.2.0_freebsd_arm64.tar.gz
+    freebsd_arm64: sha256:d1d68a1c75265a1d2c24a1c25be3f6711a728f3e844533a5e67483da65e3268f
+    # https://github.com/BeryJu/korb/releases/download/v2.2.0/korb_2.2.0_freebsd_arm.tar.gz
+    freebsd_arm: sha256:f40bad0f1b71b8ece8b9cc97e0403751ac88c55c17f26999c0ff4fcd483bd909

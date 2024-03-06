@@ -1,0 +1,60 @@
+---
+- name: Installing andrewrothstein.unarchivedeps
+  ansible.builtin.include_role:
+    name: andrewrothstein.unarchivedeps
+- name: Resolve platform specific vars
+  ansible.builtin.include_vars: '{{ item }}'
+  with_first_found:
+    - files:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+      skip: true
+      paths:
+        - '{{ role_path }}/vars'
+- name: Checking for install is {{ korb_install_exe }}
+  become: true
+  changed_when: false
+  ansible.builtin.stat:
+    path: '{{ korb_install_exe }}'
+  register: korb_binary
+- name: Downloading and installing korb
+  when: not korb_binary.stat.exists
+  block:
+    - name: Downloading {{ korb_url }} to {{ korb_tmp_archive }}
+      become: true
+      become_user: root
+      ansible.builtin.get_url:
+        url: '{{ korb_url }}'
+        checksum: '{{ korb_checksum }}'
+        dest: '{{ korb_tmp_archive }}'
+        mode: '644'
+    - name: Mkdir {{ korb_install_dir }}
+      become: true
+      become_user: root
+      ansible.builtin.file:
+        path: '{{ korb_install_dir }}'
+        state: directory
+        mode: '755'
+    - name: Unarchiving {{ korb_tmp_archive }} to {{ korb_install_dir }}
+      become: true
+      become_user: root
+      ansible.builtin.unarchive:
+        remote_src: true
+        src: '{{ korb_tmp_archive }}'
+        dest: '{{ korb_install_dir }}'
+        creates: '{{ korb_install_exe }}'
+  always:
+    - name: Rm -f {{ korb_tmp_archive }}
+      become: true
+      become_user: root
+      ansible.builtin.file:
+        path: '{{ korb_tmp_archive }}'
+        state: absent
+- name: Linking {{ korb_link }} to {{ korb_install_exe }}
+  become: true
+  become_user: root
+  ansible.builtin.file:
+    src: '{{ korb_install_exe }}'
+    dest: '{{ korb_link }}'
+    state: link
